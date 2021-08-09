@@ -1,5 +1,6 @@
 package new_years_gift.operations;
 
+import new_years_gift.gift.Gift;
 import new_years_gift.sweets.ChocolateCandy;
 import new_years_gift.sweets.Lollipop;
 import new_years_gift.sweets.Sweet;
@@ -35,9 +36,9 @@ public class File {
         return sweet;
     }
 
-    public void writeSweetsToFile(List<Sweet> gift) {
+    public void writeSweetsToFile(Gift gift) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/save_sweets"))) {
-            for (Sweet sweet : gift) {
+            for (Sweet sweet : gift.createGift()) {
                 writer.write(sweet.getName() + "\n");
                 writer.write(sweet.getPrice() + "\n");
                 writer.write(sweet.getWeight() + "\n");

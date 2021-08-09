@@ -9,13 +9,13 @@ public interface IGift {
 
     List<Sweet> createGift();
 
-    int getTotalWeight(List<Sweet> gift);
+    int getTotalWeight();
 
-    List<Sweet> sortByPrice(List<Sweet> gift) throws EmptyCollectionException;
+    List<Sweet> sortByPrice() throws EmptyCollectionException;
 
-    List<Sweet> sortByWeight(List<Sweet> gift) throws EmptyCollectionException;
+    List<Sweet> sortByWeight() throws EmptyCollectionException;
 
-    List<Sweet> sortByEnergyValue(List<Sweet> gift) throws EmptyCollectionException;
+    List<Sweet> sortByEnergyValue() throws EmptyCollectionException;
 
-    List<Sweet> getChosenPriceSweetsList(List<Sweet> gift, int startPrice, int finishPrice) throws EmptyCollectionException;
+    List<Sweet> getChosenPriceSweetsList(int startPrice, int finishPrice) throws EmptyCollectionException;
 }

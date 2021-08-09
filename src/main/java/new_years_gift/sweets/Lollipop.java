@@ -3,7 +3,6 @@ package new_years_gift.sweets;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @EqualsAndHashCode(callSuper = false)
 @Getter
@@ -14,6 +13,11 @@ public class Lollipop extends Sweet {
     public Lollipop(String name, double price, int weight, int energyValue, String taste) {
         super(name, price, weight, energyValue);
         this.taste = taste;
+    }
+
+    @Override
+    public int weigh() {
+        return getWeight();
     }
 
     @Override

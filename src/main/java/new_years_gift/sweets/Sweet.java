@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @Data
-public abstract class Sweet {
+public abstract class Sweet implements ISweet {
 
     private String name;
     private double price;
@@ -16,6 +16,6 @@ public abstract class Sweet {
 
     @Override
     public String toString() {
-        return "Name: " + getName() +", Price: " + getPrice() + ", Weight: " + getWeight() + ", EnergyValue: " + getEnergyValue();
+        return "Name: " + getName() + ", Price: " + getPrice() + ", Weight: " + getWeight() + ", EnergyValue: " + getEnergyValue();
     }
 }

@@ -15,7 +15,12 @@ public class Wafer extends Sweet {
     }
 
     @Override
+    public int weigh() {
+        return getWeight();
+    }
+
+    @Override
     public String toString() {
-        return super.toString() + ", Filling: " + getFilling() +"\n";
+        return super.toString() + ", Filling: " + getFilling() + "\n";
     }
 }

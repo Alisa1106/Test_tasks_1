@@ -14,63 +14,61 @@ import java.util.stream.Collectors;
 
 public class Gift implements IGift {
 
+    List<Sweet> sweets;
     File file = new File();
 
-    @Override
-    public List<Sweet> createGift() {
-        List<Sweet> gift = new ArrayList<>();
-        gift.add(new ChocolateCandy("Azorika", 15.99, 300, 335, "Cream"));
-        gift.add(new ChocolateCandy("Bellissimo", 14.00, 220, 340, "Creme-brulee"));
-        gift.add(new ChocolateCandy("Nuts", 18.00, 100, 460, "Nut"));
-        gift.add(new Lollipop("Chupa-chups", 12.50, 150, 280, "Strawberry"));
-        gift.add(new Lollipop("Mint", 9.99, 200, 269, "Mint"));
-        gift.add(new Wafer("Roshen", 12.99, 250, 335, "Chocolate"));
-        gift.add(file.readSweetFromFile());
-        return gift;
+    public Gift() {
+        this.sweets = new ArrayList<>();
     }
 
     @Override
-    public int getTotalWeight(List<Sweet> gift) {
+    public List<Sweet> createGift() {
+        sweets.add(new ChocolateCandy("Azorika", 15.99, 300, 335, "Cream"));
+        sweets.add(new ChocolateCandy("Bellissimo", 14.00, 220, 340, "Creme-brulee"));
+        sweets.add(new ChocolateCandy("Nuts", 18.00, 100, 460, "Nut"));
+        sweets.add(new Lollipop("Chupa-chups", 12.50, 150, 280, "Strawberry"));
+        sweets.add(new Lollipop("Mint", 9.99, 200, 269, "Mint"));
+        sweets.add(new Wafer("Roshen", 12.99, 250, 335, "Chocolate"));
+        sweets.add(file.readSweetFromFile());
+        return sweets;
+    }
+
+    @Override
+    public int getTotalWeight() {
         int totalWeight = 0;
-        for (Sweet sweet : gift) {
-            totalWeight += sweet.getWeight();
+        for (Sweet sweet : sweets) {
+            totalWeight += sweet.weigh();
         }
         return totalWeight;
     }
 
     @Override
-    public List<Sweet> sortByPrice(List<Sweet> gift) throws EmptyCollectionException {
-        if (!gift.isEmpty()) {
-            return gift.stream().sorted(Comparator.comparing(Sweet::getPrice)).collect(Collectors.toList());
-        } else {
-            throw new EmptyCollectionException("Gift list is empty!");
-        }
+    public List<Sweet> sortByPrice() throws EmptyCollectionException {
+        throwExceptionIfEmpty();
+        return sweets.stream().sorted(Comparator.comparing(Sweet::getPrice)).collect(Collectors.toList());
     }
 
     @Override
-    public List<Sweet> sortByWeight(List<Sweet> gift) throws EmptyCollectionException {
-        if (!gift.isEmpty()) {
-            return gift.stream().sorted(Comparator.comparing(Sweet::getWeight)).collect(Collectors.toList());
-        } else {
-            throw new EmptyCollectionException("Gift list is empty!");
-        }
+    public List<Sweet> sortByWeight() throws EmptyCollectionException {
+        throwExceptionIfEmpty();
+        return sweets.stream().sorted(Comparator.comparing(Sweet::getWeight)).collect(Collectors.toList());
     }
 
     @Override
-    public List<Sweet> sortByEnergyValue(List<Sweet> gift) throws EmptyCollectionException {
-        if (!gift.isEmpty()) {
-            return gift.stream().sorted(Comparator.comparing(Sweet::getEnergyValue)).collect(Collectors.toList());
-        } else {
-            throw new EmptyCollectionException("Gift list is empty!");
-        }
+    public List<Sweet> sortByEnergyValue() throws EmptyCollectionException {
+        throwExceptionIfEmpty();
+        return sweets.stream().sorted(Comparator.comparing(Sweet::getEnergyValue)).collect(Collectors.toList());
     }
 
     @Override
-    public List<Sweet> getChosenPriceSweetsList(List<Sweet> gift, int startPrice, int finishPrice) throws EmptyCollectionException {
-        if (!gift.isEmpty()) {
-            return gift.stream().filter(s -> s.getPrice() > startPrice).filter(s -> s.getPrice() < finishPrice).collect(Collectors.toList());
-        } else {
-            throw new EmptyCollectionException("There aren't elements with such parameters!");
+    public List<Sweet> getChosenPriceSweetsList(int startPrice, int finishPrice) throws EmptyCollectionException {
+        throwExceptionIfEmpty();
+        return sweets.stream().filter(s -> s.getPrice() > startPrice).filter(s -> s.getPrice() < finishPrice).collect(Collectors.toList());
+    }
+
+    public void throwExceptionIfEmpty() throws EmptyCollectionException {
+        if (sweets.isEmpty()) {
+            throw new EmptyCollectionException("Gift list is empty!");
         }
     }
 }
