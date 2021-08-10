@@ -1,0 +1,8 @@
+{
+  "name": "Zebra",
+  "price": 15.00,
+  "weight": 100,
+  "energy_value": 288,
+  "additive": "Wafer",
+  "glaze": "Milk chocolate"
+}

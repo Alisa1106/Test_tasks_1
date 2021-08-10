@@ -1,4 +1,4 @@
-package new_years_gift.sweets;
+package new_years_gift.model.sweets;
 
 import lombok.*;
 

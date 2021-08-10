@@ -1,4 +1,4 @@
-package new_years_gift.operations;
+package new_years_gift.model.constants;
 
 public enum SortingType {
 
