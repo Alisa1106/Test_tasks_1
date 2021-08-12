@@ -1,16 +1,17 @@
-package new_years_gift.utils;
+package new_years_gift.utils.writers;
 
 import new_years_gift.model.gift.Gift;
 import new_years_gift.model.sweets.*;
+import new_years_gift.utils.PropertyReader;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public class TxtWriter extends BaseWriter {
+public class TxtWriter implements IWrite {
 
     @Override
     public void writeSweetsToFile(Gift gift) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/save_sweets"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PropertyReader.getProperty("txt_to_write_file_path")))) {
             for (Sweet sweet : gift.getSweets()) {
                 writer.write(sweet.getName() + "\n");
                 writer.write(sweet.getPrice() + "\n");

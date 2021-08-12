@@ -1,4 +1,4 @@
-package new_years_gift.utils;
+package new_years_gift.utils.writers;
 
 import new_years_gift.model.gift.Gift;
 
