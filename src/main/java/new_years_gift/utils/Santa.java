@@ -38,7 +38,7 @@ public class Santa {
                 new ChocolateBar("Snickers", 20.50, 140, 551, "Hazelnut", "Dark chocolate"),
                 new JsonReader().readSweetFromFile(),
                 new TxtReader().readSweetFromFile(),
-                new HelperClass().getSweetFromDataBase()
+                HelperClass.getSweetFromDataBase()
         );
     }
 

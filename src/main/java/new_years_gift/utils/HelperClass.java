@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.List;
 
 public class HelperClass {
+
     public static Sweet getSweetFromDataBase() {
         DataBaseClient dataBaseClient = new DataBaseClient();
         dataBaseClient.connect();
